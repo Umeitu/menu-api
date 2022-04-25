@@ -1,28 +1,27 @@
-const express = require("express")
-const morgan = require("morgan")
+const express =require("express")
+const res = require("express/lib/response")
+const morgan =require("morgan")
 require("dotenv").config()
 const connectDB =require("./config/connectDB")
-const foodRoute = require("./routes/foodRoutes")
+const foodRoute = require("./routes/foodRoute")
+const userRoute = require("./routes/userRoute")
 
-const app = express()
+
+const app =express()
 
 connectDB()
-
-
-//Middlwares
-app.use(express.json ())
+//Middleware
+app.use(express.json())
 app.use(morgan("dev"))
 app.use(foodRoute)
+app.use(userRoute)
 
-
-const PORT =process.env.PORT||9000
+const PORT =process.env.PORT||5002
 //Home route
 app.get("/", (req, res)=>{
     res.json("Welcome to my Menu API")
 })
-
-
-app.listen(PORT, ()=>{
-    console.log("Running")
+    app.listen(PORT, ()=>{
+console.log("Server is Running")
+    
 })
-

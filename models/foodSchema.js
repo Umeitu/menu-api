@@ -12,21 +12,23 @@ const foodSchema = mongoose.Schema({
     time:{
         type:Date,
         default:Date.now()
-
     },
     ingredients:{
         type:Array,
-        required:true
-
+        require:true
     },
     recipe:{
         type:Array,
-        required:true
+        require:true
     }
- 
-}, {
-    timestamps:true
-}     
+
+},{ 
+  timestamps:true
+
+    
+
+}
+
 )
 const Food = mongoose.model("Food", foodSchema);
-module.exports=Food;
+module.exports=Food
